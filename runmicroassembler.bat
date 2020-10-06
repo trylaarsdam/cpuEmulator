@@ -1,0 +1,1 @@
+start /wait cmd.exe /k python .\microassembler\main.py -c .\controlmap.json -o .\opcodes.json

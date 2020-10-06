@@ -1,0 +1,111 @@
+{
+    "PC": {
+        "type": "PC",
+        "bits": 16,
+        "busPosition": 0,
+        "activePolarity": "11001100",
+        "controlLinesBitPosition": {
+            "LOAD_LSB": 0,
+            "LOAD_MSB": 1,
+            "LOAD_16": 2,
+            "INC": 3,
+            "RST": 4,
+            "OE": 5
+        },
+        "clear": 4
+    },
+    "A": {
+        "type": "Register",
+        "bits": 8,
+        "busPosition": 1,
+        "activePolarity": "11111010",
+        "controlLinesBitPosition": {
+            "OE": 0,
+            "CLR": 1,
+            "LOAD": 2
+        },
+        "clear": 1
+    },
+    "B": {
+        "type": "Register",
+        "bits": 8,
+        "busPosition": 5,
+        "activePolarity": "11111010",
+        "controlLinesBitPosition": {
+            "OE": 0,
+            "CLR": 1,
+            "LOAD": 2
+        },
+        "clear": 1
+    },
+    "MAR": {
+        "type": "MemoryAddressRegister",
+        "bits": 16,
+        "busPosition": 2,
+        "activePolarity": "11111100",
+        "controlLinesBitPosition": {
+            "LOAD_LSB": 0,
+            "LOAD_MSB": 1,
+            "LOAD_16": 2,
+            "RST": 3
+        },
+        "clear": 3
+    },
+    "ALU": {
+        "type": "ALU",
+        "bits": 8,
+        "busPosition": 3,
+        "inputComponents": [
+            "A",
+            "B"
+        ],
+        "activePolarity": "00101000",
+        "controlLinesBitPosition": {
+            "CF_OUT": 0,
+            "ZF_OUT": 1,
+            "FLG_OE": 2,
+            "CLR": 3,
+            "OE": 4,
+            "SUB": 5,
+            "FLAGS_LOAD": 6
+        }
+    },
+    "RAM": {
+        "type": "RAM",
+        "bits": 8,
+        "busPosition": 4,
+        "inputComponents": [
+            "MAR"
+        ],
+        "activePolarity": "11111000",
+        "controlLinesBitPosition": {
+            "WE": 0,
+            "OE": 1,
+            "RST": 2
+        }
+    },
+    "INST": {
+        "type": "Register",
+        "bits": 8,
+        "busPosition": 6,
+        "activePolarity": "11111010",
+        "controlLinesBitPosition": {
+            "OE": 0,
+            "CLR": 1,
+            "LOAD": 2
+        },
+        "clear": 1
+    },
+    "CTRL": {
+        "type": "CTRL",
+        "busPosition": 9,
+        "inputComponents": [
+            "INST"
+        ],
+        "activePolarity": "00000011",
+        "controlLinesBitPosition": {
+            "DONE": 0,
+            "HALT": 1
+        }
+    }
+}

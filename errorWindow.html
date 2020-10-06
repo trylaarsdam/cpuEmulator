@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>Emulator Error</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+        <script defer src="./js/emulatorError.js"></script>
+    </head>
+    <body>
+        <h3 style="text-align: center;"><strong>The Emulator Failed to Load</strong></h3>
+        <p style="text-align: center;">This is likely because your assembled.o or microcode.o files are not valid.</p>
+        <table style="text-align: center; margin-left: auto; margin-right: auto;">
+            <tbody>
+                <tr>
+                    <td><button id="assembler" type="button" onclick="buttonClicked(this.id)">RUN ASSEMBLER</button></td>
+                    <td><button id="microassembler" type="button" onclick="buttonClicked(this.id)">RUN &mu;ASSEMBLER</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

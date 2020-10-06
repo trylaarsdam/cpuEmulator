@@ -1,0 +1,366 @@
+{
+    "RST": {
+        "implied": {
+            "size": "1",
+            "opcode": {
+                "value": "0x00",
+                "flags": [
+                    {
+                        "value": "XX",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "NOP": {
+        "implied": {
+            "size": "1",
+            "opcode": {
+                "value": "0x01",
+                "flags": [
+                    {
+                        "value": "XX",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC",
+                                "CTRL_DONE"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "LDA": {
+        "immediate": {
+            "size": "2",
+            "opcode": {
+                "value": "0x02",
+                "flags": [
+                    {
+                        "value": "XX",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC"
+                            ],
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "A_LOAD"
+                            ],
+                            [
+                                "PC_INC",
+                                "ALU_FLAGS_LOAD",
+                                "CTRL_DONE"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "LDB": {
+        "immediate": {
+            "size" : "2",
+            "opcode": {
+                "value": "0x03",
+                "flags": [
+                    {
+                        "value": "XX",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC"
+                            ],
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "B_LOAD"
+                            ],
+                            [
+                                "PC_INC",
+                                "CTRL_DONE"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "OUT": {
+        "implied": {
+            "size" : "1",
+            "opcode": {
+                "value": "0x04",
+                "flags": [
+                    {
+                        "value": "XX",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC"
+                            ],
+                            [
+                                "ALU_OE",
+                                "OUT_LOAD"
+                            ],
+                            [
+                                "CTRL_DONE"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "HLT": {
+        "implied": {
+            "size" : "1",
+            "opcode": {
+                "value": "0x05",
+                "flags": [
+                    {
+                        "value": "XX",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC", 
+                                "CTRL_HALT"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "JMP": {
+        "immediate": {
+            "size": "2",
+            "opcode": {
+                "value": "0x07",
+                "flags": [
+                    {
+                        "value": "XX",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC"
+                            ],
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "PC_LOAD_LSB",
+                                "CTRL_DONE"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "ADDA": {
+        "immediate": {
+            "size" : "2",
+            "opcode": {
+                "value": "0x06",
+                "flags": [
+                    {
+                        "value": "XX",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC"
+                            ],
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "B_LOAD",
+                                "PC_INC"
+                            ],
+                            [
+                                "ALU_OE",
+                                "A_LOAD",
+                                "ALU_FLAGS_LOAD",
+                                "CTRL_DONE"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "SUBA": {
+        "immediate": {
+            "size" : "2",
+            "opcode": {
+                "value": "0x08",
+                "flags": [
+                    {
+                        "value": "XX",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC"
+                            ],
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "B_LOAD",
+                                "ALU_SUB",
+                                "PC_INC"
+                            ],
+                            [
+                                "ALU_OE",
+                                "ALU_SUB",
+                                "A_LOAD",
+                                "ALU_FLAGS_LOAD",
+                                "CTRL_DONE"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "JZ": {
+        "immediate": {
+            "size": "2",
+            "opcode": {
+                "value": "0x09",
+                "flags": [
+                    {
+                        "value": "1X",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC"
+                            ],
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "PC_LOAD_LSB",
+                                "CTRL_DONE"
+                            ]
+                        ]
+                    },
+                    {
+                        "value": "0X",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC"
+                            ],
+                            [
+                                "PC_INC",
+                                "CTRL_DONE"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script defer src="/js/selection.js"></script>
+  </head>
+  <body>
+  <!-- Metro 4 -->
+  <p></p>
+  <p style="text-align: center;">Select present hardware components</p>
+  <table style="border-collapse: collapse; width: 100%; border-style: none;">
+    <tbody>
+    {% for busPosition in component_list %}
+      {% if busPosition is divisibleby 2 %}
+        <tr>
+        {% if emulatorData[busPosition] is not none %}
+          <td style="width: 5%; text-align: center;"><div style="text-align:center"><input type="text" id="{{ emulatorData[busPosition].name }}_device" name="particleSelect" size="1"/></div></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}" name="selectedCheckBox" type="checkbox" value="ctrlLine" title="Toggle {{ emulatorData[busPosition].name }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 10%; text-align: left;">{{ emulatorData[busPosition].name }}</td>
+          <td style="width: 8%;"></td>
+          {% else %}
+            <td style="width: 5%; text-align: center;"></td>
+            <td style="width: 3%; text-align: center;"></td>
+            <td style="width: 10%; text-align: left;"></td>
+            <td style="width: 8%;"></td>
+        {% endif %}
+      {% else %}
+        {% if emulatorData[busPosition] is not none %}
+          <td style="width: 10%; text-align: right;">{{ emulatorData[busPosition].name }}</td>
+          <td style="width: 3%; text-align: center;"><div style="text-align:center"><input id="{{ emulatorData[busPosition].name }}" name="selectedCheckBox" type="checkbox" value="ctrlLine" title="Toggle {{ emulatorData[busPosition].name }}" onclick="checkboxClicked(this.id)" /></div></td>
+          <td style="width: 5%; text-align: center;"><input type="text" id="{{ emulatorData[busPosition].name }}_device" name="particleSelect" size="1"/></td>
+        {% else %}
+          <td style="width: 8%; text-align: right;"></td>
+          <td style="width: 10%; text-align: right;"></td>
+          <td style="width: 3%; text-align: center;"></td>
+          <td style="width: 5%; text-align: center;"></td>
+        {% endif %}
+        </tr>
+      {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+  <table border="0" style="border-collapse: collapse; width: 100%;"><tr><td>&nbsp;</td></tr><tr><td style="width: 100%; text-align: center;"><button id="ok" type="button" onclick="closeWindow()">Done</button></td></tr></table>
+  </body> 
+</html>

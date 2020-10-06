@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Connect to Photon</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+        <script defer src="./js/input_blynk.js"></script>
+    </head>
+    <body>
+        <table border="0" style="border-collapse: collapse; width: 100%;">
+            <tbody>
+                <tr>
+                <td style="width: 100%;"><input type="text" id="apikey" name="apikey" size="45"/></td>
+                </tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr>
+                    <td style="width: 50%; text-align: left;"><button id="ok" type="button" onclick="closeWindow()">Cancel</button></td>
+                    <td style="width: 50%; text-align: right;"><button id="ok" type="button" onclick="sendUUID()">Connect</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

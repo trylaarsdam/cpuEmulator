@@ -1,0 +1,29 @@
+{
+    "NOP": {
+        "implied": {
+            "size": "1",
+            "opcode": {
+                "value": "0x00",
+                "flags": [
+                    {
+                        "value": "XX",
+                        "microcode": [
+                            [
+                                "PC_OE",
+                                "MAR_LOAD_LSB"
+                            ],
+                            [
+                                "RAM_OE",
+                                "INST_LOAD"
+                            ],
+                            [
+                                "PC_INC",
+                                "CTRL_DONE"
+                            ]
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

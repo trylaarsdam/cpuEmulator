@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script defer src="/js/render.js"></script>
+  </head>
+  <body>
+  <!-- Metro 4 -->
+  <table style="border-collapse: collapse; width: 100%; border-style: none;">
+    <tbody>
+      <tr style="height: 22px;"></tr>
+      <tr style="height: 22px;">
+        <td style="width: 20%; height: 22px;"></td>
+        <td style="width: 20.128%; text-align: right; height: 22px;">Bus Value:</td>
+        <td style="width: 19.872%; text-align: center; height: 22px;"><button type="button" id="bus_value">busValue</button></td>
+        <td style="width: 20%; height: 22px;"></td>
+        <td style="width: 20%; height: 22px;"></td>
+      </tr>
+      <tr style="height: 22px;">
+        <td style="width: 20%; height: 22px;"></td>
+        <td style="width: 20.128%; text-align: right; height: 22px;">Bus Status:</td>
+        <td style="width: 19.872%; text-align: center; height: 22px;"><button type="button" id="bus_status">Floating</button></td>
+        <td style="width: 20%; height: 22px;"></td>
+        <td style="width: 20%; height: 22px;"></td>
+      </tr>
+      <tr style="height: 22px;">
+        <td style="width: 20%; height: 22px;"></td>
+        <td style="width: 20.128%; text-align: right; height: 22px;">Current Opcode:</td>
+        <td style="width: 19.872%; text-align: center; height: 22px;"><p id="opcode"></p></td>
+        <td style="width: 20%; height: 22px;"></td>
+        <td style="width: 20%; height: 22px;"></td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <table style="border-collapse: collapse; width: 100%; border-style: none;">
+    <tbody>
+    {% for busPosition in component_list %}
+      {% if busPosition is divisibleby 2 %}
+        <tr>
+        {% if emulatorData[busPosition] is not none %}
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_7" name="ctrlLine7" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[7] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_6" name="ctrlLine6" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[6] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_5" name="ctrlLine5" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[5] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_4" name="ctrlLine4" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[4] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_3" name="ctrlLine3" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[3] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_2" name="ctrlLine2" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[2] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_1" name="ctrlLine1" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[1] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_0" name="ctrlLine0" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[0] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 10%; text-align: left;">{{ emulatorData[busPosition].name }}</td>
+          <td style="width: 7%; text-align: left;"><button type="button" class="valueButton" id="{{ emulatorData[busPosition].name }}_button" onclick="buttonClicked(this.id);">0</button></td>
+          <td style="width: 5%; text-align: center;"><p id="{{ emulatorData[busPosition].name }}_status"></p></td>
+          <td style="width: 4%;"><p style="text-align: center;">| |</p></td>
+          {% else %}
+            <td style="width: 3%; text-align: center;"></td>
+            <td style="width: 3%; text-align: center;"></td>
+            <td style="width: 3%; text-align: center;"></td>
+            <td style="width: 3%; text-align: center;"></td>
+            <td style="width: 3%; text-align: center;"></td>
+            <td style="width: 3%; text-align: center;"></td>
+            <td style="width: 3%; text-align: center;"></td>
+            <td style="width: 3%; text-align: center;"></td>
+            <td style="width: 10%; text-align: left;"></td>
+            <td style="width: 7%; text-align: left;"></td>
+            <td style="width: 5%; text-align: center;"></td>
+            <td style="width: 4%;"><p style="text-align: center;">| |</p></td>
+          {% endif %}
+      {% else %}
+        {% if emulatorData[busPosition] is not none %}
+          <td style="width: 5%; text-align: center;"><p id="{{ emulatorData[busPosition].name }}_status"></p></td>
+          <td style="width: 8%; text-align: right;"><button type="button" id="{{ emulatorData[busPosition].name }}_button" onclick="buttonClicked(this.id);">0</button></td>
+          <td style="width: 10%; text-align: right;">{{ emulatorData[busPosition].name }}</td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_7" name="ctrlLine7" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[7] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_6" name="ctrlLine6" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[6] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_5" name="ctrlLine5" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[5] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_4" name="ctrlLine4" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[4] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_3" name="ctrlLine3" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[3] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_2" name="ctrlLine2" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[2] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_1" name="ctrlLine1" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[1] }}" onclick="checkboxClicked(this.id)" /></td>
+          <td style="width: 3%; text-align: center;"><input id="{{ emulatorData[busPosition].name }}_0" name="ctrlLine0" type="checkbox" value="ctrlLine" title="{{ emulatorData[busPosition].controlLineNames[0] }}" onclick="checkboxClicked(this.id)" /></td>
+        {% else %}
+          <td style="width: 5%; text-align: center;"></td>  
+          <td style="width: 8%; text-align: right;"></td>
+          <td style="width: 10%; text-align: right;"></td>
+          <td style="width: 3%; text-align: center;"></td>
+          <td style="width: 3%; text-align: center;"></td>
+          <td style="width: 3%; text-align: center;"></td>
+          <td style="width: 3%; text-align: center;"></td>
+          <td style="width: 3%; text-align: center;"></td>
+          <td style="width: 3%; text-align: center;"></td>
+          <td style="width: 3%; text-align: center;"></td>
+          <td style="width: 3%; text-align: center;"></td>
+        {% endif %}
+        </tr>
+      {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+  <table style="height: 44px; width: 100%; border-collapse: collapse; border-style: none;">
+    <tbody>
+      <tr style="height: 22px;"></tr>
+      <tr style="height: 22px;">
+        <td style="width: 20%; height: 22px;"></td>
+        <td style="width: 20%; height: 22px; text-align: center;"><button type="button" id="clock" onclick="buttonClicked(this.id);">CLOCK</button></td>
+        <td style="width: 20%; height: 22px; text-align: center"><p id="clockCounter">Cycles: 0</p></td>
+        <td style="width: 20%; height: 22px; text-align: center;"><button type="button" id="reset" onclick="buttonClicked(this.id);">RESET</button></td>
+        <td style="width: 20%; height: 22px;"></td>
+      </tr>
+      <tr style="height:22px;"></tr>
+      <tr style="height: 22px;">
+        <td style="width: 20%; height: 22px;"></td>
+        <td style="width: 20%; height: 22px; text-align: center;"><button id="assembler" type="button" onclick="buttonClicked(this.id)">RUN ASSEMBLER</button></td>
+        <td style="width: 20%; height: 22px; text-align: center;"><button id="autoClock" type="button" onclick="buttonClicked(this.id)">Auto Clock</button></td>
+        <td style="width: 20%; height: 22px; text-align: center;"><button id="microassembler" type="button" onclick="buttonClicked(this.id)">RUN &mu;ASSEMBLER</button></td>
+        <td style="width: 20%; height: 22px;"></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin: 5px">
+    RAM Dump
+    <br />
+    <input type="text"; style="margin: 5px; width: 78px; height: 20px;" cols="30" rows="2" id="dumpRAM_address"; placeholder="Address">
+    <input type="text"; style="margin: 5px; width: 78px; height: 20px;" cols="30" rows="2" id="dumpRAM_bytes"; placeholder="Bytes">
+    <p id="dump" style="margin: 5px">&nbsp;</p>
+    <button type="button" value="Show" id="dumpRAM" onclick="buttonClicked(this.id)"; style="margin: 5px">
+      Show
+    </button>
+  </p>
+  </body> 
+</html>

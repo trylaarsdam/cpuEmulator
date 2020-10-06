@@ -1,0 +1,60 @@
+{
+  "name": "CPU_Emulator",
+  "version": "0.3.6",
+  "main": "main.js",
+  "description": "Customizable CPU Emulator",
+  "license": "None",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": {
+    "name": "Todd Rylaarsdam",
+    "email": "rylaarsdamto@gmail.com"
+  },
+  "dependencies": {
+    "dialogs": "^2.0.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "mqtt": "^4.1.0",
+    "pretty-checkbox": "^3.0.3",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.52",
+    "@electron-forge/maker-deb": "^6.0.0-beta.52",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.52",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.52",
+    "@electron-forge/maker-zip": "^6.0.0-beta.52",
+    "electron": "^8.4.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "your_app"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1 @@
+start /wait cmd.exe /k python ./assembler/main.py ./assembler/code.asm -o ./opcodes.json
